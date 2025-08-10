@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/></head>
+<body style="font-family:Arial,Helvetica,sans-serif;background:#071019;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;margin:0">
+  <div style="max-width:720px;padding:18px;background:#0e1b23;border-radius:10px;text-align:center">
+    <h3 style="margin:0 0 12px">Vaultpay — Processing login...</h3>
+    <div id="msg">Please wait.</div>
+  </div>
+
+<script>
+(function(){
+  function qToObj(q){ const o={}; q.replace(/^\?/, '').split('&').forEach(s=>{ if(!s) return; const [k,v]=s.split('='); o[decodeURIComponent(k)]= decodeURIComponent(v||'');}); return o; }
+  function hToObj(h){ const o={}; h.replace(/^#/, '').split('&').forEach(s=>{ if(!s) return; const [k,v]=s.split('='); o[decodeURIComponent(k)]= decodeURIComponent(v||'');}); return o; }
+  const query = qToObj(window.location.search);
+  const hash = hToObj(window.location.hash);
+  const payload = {};
+  ['access_token','refresh_token','expires_in','token_type','scope','code'].forEach(k=>{
+    if(query[k]) payload[k]=query[k];
+    if(hash[k]) payload[k]=hash[k];
+  });
+
+  if(payload.access_token){
+    document.getElementById('msg').innerText = 'Login successful — returning to app...';
+    if(window.opener) window.opener.postMessage({ source:'deriv_oauth_callback', access_token: payload.access_token, raw: payload }, window.location.origin);
+    try{ localStorage.setItem('deriv_token', payload.access_token); }catch(e){}
+    setTimeout(()=>{ try{ window.close(); }catch(e){} }, 900);
+  } else if(payload.code){
+    document.getElementById('msg').innerHTML = 'Authorization code received. Reply "help server" for the free server-exchange function.';
+    if(window.opener) window.opener.postMessage({ source:'deriv_oauth_callback', code: payload.code }, window.location.origin);
+  } else {
+    document.getElementById('msg').innerText = 'No token or code found in redirect. Try logging in again.';
+  }
+})();
+</script>
+</body>
+</html>
