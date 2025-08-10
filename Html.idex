@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vaultpay</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1>Vaultpay</h1>
+          <div class="tag">DCash-style • USD / GBP • min $0.50</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <a id="affiliateBtn" class="btn small" href="https://partners.deriv.com/rx?sidc=8B834F18-9089-4971-995A-5CBB8D7788EB&utm_campaign=dynamicworks&utm_medium=affiliate&utm_source=CU38529" target="_blank" rel="noopener noreferrer">Create Account</a>
+        <button id="loginBtn" class="btn small">Login with Deriv</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="card controls">
+        <div class="row">
+          <label for="currency">Currency</label>
+          <select id="currency">
+            <option value="USD">USD</option>
+            <option value="GBP">GBP</option>
+            <option value="KES">KES</option>
+          </select>
+
+          <label for="amount">Amount</label>
+          <input id="amount" type="number" min="0.5" step="0.01" placeholder="0.50" value="1.00" />
+
+          <button id="depositBtn" class="btn">Deposit</button>
+          <button id="withdrawBtn" class="btn alt">Withdraw</button>
+        </div>
+        <div class="row small muted">markup: <strong>2.5%</strong> — min deposit/withdraw: <strong>0.50 USD/GBP</strong></div>
+      </section>
+
+      <section id="accountCard" class="card account" style="display:none;">
+        <div class="row space">
+          <div>
+            <div class="label">Account</div>
+            <div id="acctId">—</div>
+          </div>
+          <div>
+            <div class="label">Balance</div>
+            <div id="balanceDisplay">—</div>
+            <div class="small muted" id="balanceSub">—</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="txCard" class="card tx" style="display:none;">
+        <div class="row space">
+          <h3>Transactions (latest)</h3>
+          <div>
+            <select id="txCurrency">
+              <option value="KES">KES</option>
+              <option value="USD">USD</option>
+              <option value="GBP">GBP</option>
+            </select>
+            <button id="refreshTx" class="btn small">Refresh</button>
+          </div>
+        </div>
+
+        <div class="tx-table-wrapper">
+          <table id="txTable">
+            <thead><tr><th>Date</th><th>Type</th><th>Amount</th><th>Currency</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- floating WhatsApp -->
+    <a id="whatsapp" class="whatsapp" href="https://wa.me/254758419976" target="_blank" rel="noopener noreferrer" title="Contact Support">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="wa" />
+    </a>
+
+    <!-- Modal Chart -->
+    <div id="modal" class="modal" style="display:none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Transactions in <span id="modalCurrency">KES</span></h3>
+          <button id="closeModal" class="btn small alt">Close</button>
+        </div>
+        <canvas id="chartCanvas" height="200"></canvas>
+      </div>
+    </div>
+
+    <!-- Info page (modal) -->
+    <div id="infoPanel" class="modal" style="display:none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>How to Deposit & Withdraw</h3>
+          <button id="closeInfo" class="btn small alt">Close</button>
+        </div>
+        <div class="info-body">
+          <h4>Deposit</h4>
+          <ol>
+            <li>Login with Deriv.</li>
+            <li>Choose currency and amount (min 0.50).</li>
+            <li>Tap Deposit → complete payment in Deriv cashier.</li>
+          </ol>
+          <h4>Withdraw</h4>
+          <ol>
+            <li>Tap Withdraw → follow Deriv withdrawal steps.</li>
+          </ol>
+          <p class="small muted">A small service fee is applied to payments.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
