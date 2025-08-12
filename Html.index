@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vaultpay - Deposit & Withdraw</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>Vaultpay</header>
+
+<main>
+  <button id="deriv-login-btn">Login with Deriv</button>
+
+  <div class="balance-container" style="display:none;" id="balance-container">
+    <div>USD: <span id="balance-usd">-</span></div>
+    <div>GBP: <span id="balance-gbp">-</span></div>
+    <div>KSH: <span id="balance-ksh">-</span></div>
+  </div>
+
+  <select id="currency-select" style="display:none;">
+    <option value="usd" selected>USD</option>
+    <option value="gbp">GBP</option>
+    <option value="ksh">KSH</option>
+  </select>
+
+  <button id="deposit-btn" style="display:none;">Deposit</button>
+  <button id="withdraw-btn" style="display:none;">Withdraw</button>
+
+  <div id="transaction-history" style="display:none;">
+    <h3>Transaction History</h3>
+    <ul id="transactions-list" style="padding-left:1rem; list-style-type: disc;"></ul>
+  </div>
+</main>
+
+<!-- Info Modal -->
+<div id="info-modal">
+  <div class="modal-content">
+    <span class="close-btn" id="modal-close-btn">&times;</span>
+    <h2>Deposit & Withdraw Info</h2>
+    <p>
+      Minimum deposit and withdrawal is 0.5 USD or GBP.<br />
+      Markup of 2.5% is applied to all transactions.<br />
+      Deposits and withdrawals are instant.<br />
+      Contact us anytime on WhatsApp for support.<br />
+      Affiliate link is embedded to support Vaultpay.<br />
+    </p>
+  </div>
+</div>
+
+<!-- WhatsApp Floating Button -->
+<div id="whatsapp-btn" title="Contact on WhatsApp" aria-label="WhatsApp Contact">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20.52 3.48A11.874 11.874 0 0 0 12 0C5.373 0 0 5.373 0 12c0 2.116.554 4.158 1.6 5.982L0 24l6.343-1.639A11.91 11.91 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.204-1.25-6.204-3.48-8.52zM12 22c-1.96 0-3.805-.603-5.34-1.62l-.383-.26-3.775.976.994-3.69-.248-.382A9.936 9.936 0 0 1 2 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.52-7.88c-.283-.14-1.67-.823-1.93-.917-.26-.095-.45-.14-.64.14-.187.277-.723.917-.887 1.106-.16.188-.32.21-.594.07-.273-.14-1.154-.425-2.2-1.357-.812-.72-1.36-1.608-1.52-1.884-.157-.277-.017-.427.123-.566.126-.125.283-.325.423-.488.14-.16.187-.277.28-.46.093-.186.047-.348-.023-.488-.07-.14-.64-1.54-.877-2.11-.23-.552-.466-.48-.64-.49l-.55-.01c-.19 0-.5.07-.765.348-.265.277-1.015.99-1.015 2.41 0 1.42 1.04 2.795 1.185 2.985.14.187 2.05 3.127 4.97 4.38.695.3 1.237.48 1.66.615.697.22 1.33.19 1.83.115.56-.088 1.67-.68 1.9-1.34.234-.66.234-1.226.164-1.34-.07-.112-.26-.18-.54-.317z"/>
+  </svg>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
