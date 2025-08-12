@@ -1,0 +1,116 @@
+/* Simple Dcash style inspired */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #121212;
+  color: #f0f0f0;
+  margin: 0; padding: 0;
+  display: flex; flex-direction: column; align-items: center;
+  min-height: 100vh;
+}
+header {
+  background: #1f1f1f;
+  width: 100%; padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  color: #00e676;
+}
+main {
+  max-width: 400px;
+  width: 100%;
+  padding: 1rem;
+}
+.balance-container {
+  background: #222;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-around;
+  font-weight: 600;
+}
+button {
+  background: #00e676;
+  border: none;
+  color: #121212;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+button:hover {
+  background: #00c853;
+}
+#currency-select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+}
+#transaction-history {
+  background: #222;
+  border-radius: 8px;
+  padding: 1rem;
+  max-height: 150px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+#transaction-history h3 {
+  margin-top: 0;
+}
+/* WhatsApp floating button */
+#whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.3s ease;
+}
+#whatsapp-btn:hover {
+  background: #1ebe57;
+}
+#whatsapp-btn svg {
+  width: 32px;
+  height: 32px;
+  fill: white;
+}
+/* Modal */
+#info-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+#info-modal .modal-content {
+  background: #1e1e1e;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  max-width: 350px;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+#info-modal .close-btn {
+  cursor: pointer;
+  color: #00e676;
+  font-weight: 700;
+  float: right;
+  font-size: 1.2rem;
+}
+#info-modal h2 {
+  margin-top: 0;
+  color: #00e676;
+}
